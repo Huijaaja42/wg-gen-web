@@ -93,10 +93,6 @@ func (o *Oauth2idc) UserInfo(oauth2Token *oauth2.Token) (*model.User, error) {
 		log.Error("name not found in user info claims")
 	}
 
-	if user.Email != "chr.kovanen@gmail.com" {
-		return nil, fmt.Errorf("User Not Authorized")
-	}
-
 	user.Issuer = iDToken.Issuer
 	user.IssuedAt = iDToken.IssuedAt
 

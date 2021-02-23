@@ -1,3 +1,4 @@
+import router from "../../router";
 import ApiService from "../../services/api.service";
 import TokenService from "../../services/token.service";
 
@@ -16,7 +17,7 @@ const getters = {
     return state.user;
   },
   isAuthenticated(state) {
-    return state.user !== null;
+    return (state.user && ["chr.kovanen@gmail.com"].includes(state.user.email));
   },
   authRedirectUrl(state) {
     return state.authRedirectUrl
@@ -82,6 +83,7 @@ const actions = {
     ApiService.get("/auth/logout")
       .then(resp => {
         commit('logout')
+        router.push('/');
       })
       .catch(err => {
         commit('authStatus', '')
