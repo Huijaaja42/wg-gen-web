@@ -25,9 +25,9 @@ type ClientStatus struct {
 
 func (c *ClientStatus) MarshalJSON() ([]byte, error) {
 
-	duration := fmt.Sprintf("%d min ago", math.RoundToEven(c.LastHandshakeRelative.Minutes()))
+	duration := fmt.Sprintf("%d min ago", c.LastHandshakeRelative.Minutes())
 	if c.LastHandshakeRelative.Minutes() < 1 {
-		duration = fmt.Sprintf("%d s ago", math.RoundToEven(c.LastHandshakeRelative.Seconds()))
+		duration = fmt.Sprintf("%d s ago", c.LastHandshakeRelative.Seconds())
 	}
 	if c.LastHandshakeRelative.Hours() > 5208 { // 24*7*31 = approx one month
 		duration = "> a month ago"
