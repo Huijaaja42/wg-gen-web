@@ -4,7 +4,7 @@
             <v-col cols="12">
                 <v-card dark>
                     <v-card-title>
-                        Server's interface configuration
+                        Server interface configuration
                     </v-card-title>
                     <div class="d-flex flex-no-wrap justify-space-between">
                         <v-col cols="12">
@@ -49,7 +49,7 @@
             <v-col cols="12">
                 <v-card dark>
                     <v-card-title>
-                        Client's global configuration
+                        Client global configuration
                         <v-spacer></v-spacer>
                         <v-btn
                                 color="warning"

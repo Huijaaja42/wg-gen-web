@@ -32,6 +32,7 @@
                     :headers="headers"
                     :items="clients"
                     :search="search"
+                    @click:row="startShow"
             >
                 <template v-slot:item.address="{ item }">
                     <v-chip
@@ -125,7 +126,7 @@
 
                                 <v-list-item-avatar
                                         tile
-                                        size="150"
+                                        size="250"
                                 >
                                     <v-img :src="'data:image/png;base64, ' + getClientQrcode(client.id)"/>
                                 </v-list-item-avatar>
@@ -460,6 +461,30 @@
                 </v-card-actions>
             </v-card>
         </v-dialog>
+        <v-dialog
+            v-if="client"
+            v-model="dialogShow"
+            max-width="300"
+        >
+            <v-card>
+                <v-list-item-avatar
+                    tile
+                    size="250"
+                >
+                    <v-img :src="'data:image/png;base64, ' + getClientQrcode(client.id)"/>
+                </v-list-item-avatar>
+                <v-card-actions>
+                    <v-spacer/>
+                    <v-btn
+                            color="primary"
+                            @click="dialogShow = false"
+                    >
+                        Close
+                        <v-icon right dark>mdi-close-circle-outline</v-icon>
+                    </v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
     </v-container>
 </template>
 <script>
@@ -472,6 +497,7 @@
       listView: false,
       dialogCreate: false,
       dialogUpdate: false,
+      dialogShow: false,
       client: null,
       valid: false,
       search: '',
@@ -510,6 +536,7 @@
         updateClient: 'update',
         deleteClient: 'delete',
         emailClient: 'email',
+        showClient: 'show'
       }),
       ...mapActions('server', {
         readServer: 'read',
@@ -562,6 +589,16 @@
       startUpdate(client) {
         this.client = client;
         this.dialogUpdate = true;
+      },
+
+      startShow(client) {
+        this.client = client;
+        this.dialogShow = true;
+      },
+
+      show(client) {
+        this.dialogShow = false;
+        this.showClient(client)
       },
 
       update(client) {

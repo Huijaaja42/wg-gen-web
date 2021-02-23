@@ -1,8 +1,7 @@
 <template>
     <v-container>
         <v-app-bar app>
-            <img class="mr-3" :src="require('../assets/logo.png')" height="50" alt="Wg Gen Web"/>
-            <v-toolbar-title to="/">Wg Gen Web</v-toolbar-title>
+            <v-toolbar-title to="/">Wireguard Web</v-toolbar-title>
 
             <v-spacer />
 

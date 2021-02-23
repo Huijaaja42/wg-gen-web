@@ -18,14 +18,12 @@
 <script>
   import Notification from './components/Notification'
   import Header from "./components/Header";
-  import Footer from "./components/Footer";
   import {mapActions, mapGetters} from "vuex";
 
   export default {
     name: 'App',
 
     components: {
-      Footer,
       Header,
       Notification
     },
