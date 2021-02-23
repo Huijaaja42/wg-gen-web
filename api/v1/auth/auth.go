@@ -121,6 +121,11 @@ func user(c *gin.Context) {
 			return
 		}
 
+		if user.Email != "chr.kovanen@gmail.com" {
+			c.AbortWithStatus(http.StatusUnauthorized)
+			return
+		}
+
 		c.JSON(http.StatusOK, user)
 		return
 	}

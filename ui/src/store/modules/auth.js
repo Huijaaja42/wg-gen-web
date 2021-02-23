@@ -17,7 +17,7 @@ const getters = {
     return state.user;
   },
   isAuthenticated(state) {
-    return (state.user && ["chr.kovanen@gmail.com"].includes(state.user.email));
+    return state.user !== null;
   },
   authRedirectUrl(state) {
     return state.authRedirectUrl
@@ -83,7 +83,7 @@ const actions = {
     ApiService.get("/auth/logout")
       .then(resp => {
         commit('logout')
-        router.push('/');
+        router.go('/');
       })
       .catch(err => {
         commit('authStatus', '')
