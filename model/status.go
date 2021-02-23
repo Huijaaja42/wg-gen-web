@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"time"
-	"math"
 )
 
 // ClientStatus structure
