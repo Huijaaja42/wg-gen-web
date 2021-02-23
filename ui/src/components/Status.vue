@@ -121,7 +121,10 @@
     mounted () {
       this.readEnabled()
       if(this.enabled) {
-        this.readStatus()
+        this.readStatus();
+        this.interval = setInterval(function () {
+          this.readStatus();
+        }.bind(this), 1000);
       }
     },
 
@@ -131,14 +134,6 @@
           this.readStatus()
         }
       },
-    },
-
-    ready () {
-        this.readStatus()
-
-        this.interval = setInterval(function () {
-          this.readStatus()
-        }.bind(this), 1000);
     },
 
     methods: {
