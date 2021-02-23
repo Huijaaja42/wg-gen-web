@@ -141,7 +141,7 @@ func ReadClientStatus() ([]*model.ClientStatus, error) {
 		for i, peerIP := range peerIPs {
 			peerAddresses[i] = peerIP.(string)
 		}
-		peerHandshakeRelative := time.Since(peerHandshake)
+		peerHandshakeRelative := fmt.Sprintf("%.2f ago", time.Since(peerHandshake).Minutes())
 		peerActive := peerHandshakeRelative.Minutes() < 3 // TODO: we need a better detection... ping for example?
 
 		newClientStatus := &model.ClientStatus{

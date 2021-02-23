@@ -119,8 +119,8 @@
                                 <v-list-item-content>
                                     <v-list-item-title class="headline">{{ client.name }}</v-list-item-title>
                                     <v-list-item-subtitle>{{ client.email }}</v-list-item-subtitle>
-                                    <v-list-item-subtitle>Created: {{ client.created | formatDate }} by {{ client.createdBy }}</v-list-item-subtitle>
-                                    <v-list-item-subtitle>Updated: {{ client.updated | formatDate }} by {{ client.updatedBy }}</v-list-item-subtitle>
+                                    <v-list-item-subtitle>Created: {{ client.created | formatDate }}</v-list-item-subtitle>
+                                    <v-list-item-subtitle>Updated: {{ client.updated | formatDate }}</v-list-item-subtitle>
                                 </v-list-item-content>
 
                                 <v-list-item-avatar
@@ -158,20 +158,6 @@
                                     <template v-slot:activator="{ on }">
                                         <v-btn
                                                 text
-                                                v-on:click="forceFileDownload(client)"
-                                                v-on="on"
-                                        >
-                                            <span class="d-none d-lg-flex">Download</span>
-                                            <v-icon right dark>mdi-cloud-download-outline</v-icon>
-                                        </v-btn>
-                                    </template>
-                                    <span>Download</span>
-                                </v-tooltip>
-
-                                <v-tooltip bottom>
-                                    <template v-slot:activator="{ on }">
-                                        <v-btn
-                                                text
                                                 @click.stop="startUpdate(client)"
                                                 v-on="on"
                                         >
@@ -186,14 +172,14 @@
                                     <template v-slot:activator="{ on }">
                                         <v-btn
                                                 text
-                                                @click="remove(client)"
+                                                v-on:click="forceFileDownload(client)"
                                                 v-on="on"
                                         >
-                                            <span class="d-none d-lg-flex">Delete</span>
-                                            <v-icon right dark>mdi-trash-can-outline</v-icon>
+                                            <span class="d-none d-lg-flex">Download</span>
+                                            <v-icon right dark>mdi-cloud-download-outline</v-icon>
                                         </v-btn>
                                     </template>
-                                    <span>Delete</span>
+                                    <span>Download</span>
                                 </v-tooltip>
 
                                 <v-tooltip bottom>
@@ -208,6 +194,20 @@
                                         </v-btn>
                                     </template>
                                     <span>Email</span>
+                                </v-tooltip>
+
+                                <v-tooltip bottom>
+                                    <template v-slot:activator="{ on }">
+                                        <v-btn
+                                                text
+                                                @click="remove(client)"
+                                                v-on="on"
+                                        >
+                                            <span class="d-none d-lg-flex">Delete</span>
+                                            <v-icon right dark>mdi-trash-can-outline</v-icon>
+                                        </v-btn>
+                                    </template>
+                                    <span>Delete</span>
                                 </v-tooltip>
                                 <v-spacer/>
                                 <v-tooltip right>

@@ -124,7 +124,7 @@
         this.readStatus();
         this.interval = setInterval(function () {
           this.readStatus();
-        }.bind(this), 1000);
+        }.bind(this), 5000);
       }
     },
 
