@@ -9,7 +9,6 @@ import (
 	"os"
 	"sort"
 	"time"
-	"fmt"
 
 	"gitlab.127-0-0-1.fr/vx3r/wg-gen-web/model"
 )
@@ -142,8 +141,7 @@ func ReadClientStatus() ([]*model.ClientStatus, error) {
 		for i, peerIP := range peerIPs {
 			peerAddresses[i] = peerIP.(string)
 		}
-		timeSince := time.Since(peerHandshake).Minutes()
-		peerHandshakeRelative := fmt.Sprintf("%.2f ago", timeSince)
+		peerHandshakeRelative := time.Since(peerHandshake)
 		peerActive := peerHandshakeRelative.Minutes() < 3 // TODO: we need a better detection... ping for example?
 
 		newClientStatus := &model.ClientStatus{

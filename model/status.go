@@ -17,16 +17,16 @@ type ClientStatus struct {
 	AllowedIPs            []string      `json:"allowedIPs"`
 	Endpoint              string        `json:"endpoint"`
 	LastHandshake         time.Time     `json:"lastHandshake"`
-	LastHandshakeRelative string `json:"lastHandshakeRelative"`
+	LastHandshakeRelative time.Duration `json:"lastHandshakeRelative"`
 	ReceivedBytes         int           `json:"receivedBytes"`
 	TransmittedBytes      int           `json:"transmittedBytes"`
 }
 
 func (c *ClientStatus) MarshalJSON() ([]byte, error) {
 
-	duration := fmt.Sprintf("%v ago", c.LastHandshakeRelative)
+	duration := fmt.Sprintf("%.2f min ago", c.LastHandshakeRelative.Minutes())
 	if c.LastHandshakeRelative.Hours() > 5208 { // 24*7*31 = approx one month
-		duration = "more than a month ago"
+		duration = "> a month ago"
 	}
 	return json.Marshal(&struct {
 		PublicKey             string    `json:"publicKey"`
@@ -51,7 +51,7 @@ func (c *ClientStatus) MarshalJSON() ([]byte, error) {
 		AllowedIPs:            c.AllowedIPs,
 		Endpoint:              c.Endpoint,
 		LastHandshake:         c.LastHandshake,
-		LastHandshakeRelative: string,
+		LastHandshakeRelative: duration,
 		ReceivedBytes:         c.ReceivedBytes,
 		TransmittedBytes:      c.TransmittedBytes,
 	})
