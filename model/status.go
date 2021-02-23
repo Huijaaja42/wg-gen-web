@@ -17,7 +17,7 @@ type ClientStatus struct {
 	AllowedIPs            []string      `json:"allowedIPs"`
 	Endpoint              string        `json:"endpoint"`
 	LastHandshake         time.Time     `json:"lastHandshake"`
-	LastHandshakeRelative time.Duration `json:"lastHandshakeRelative"`
+	LastHandshakeRelative string `json:"lastHandshakeRelative"`
 	ReceivedBytes         int           `json:"receivedBytes"`
 	TransmittedBytes      int           `json:"transmittedBytes"`
 }
@@ -51,7 +51,7 @@ func (c *ClientStatus) MarshalJSON() ([]byte, error) {
 		AllowedIPs:            c.AllowedIPs,
 		Endpoint:              c.Endpoint,
 		LastHandshake:         c.LastHandshake,
-		LastHandshakeRelative: duration,
+		LastHandshakeRelative: string,
 		ReceivedBytes:         c.ReceivedBytes,
 		TransmittedBytes:      c.TransmittedBytes,
 	})
