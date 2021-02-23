@@ -4,29 +4,29 @@
             <v-col cols="12">
                 <v-card dark>
                     <v-card-title>
-                        Server interface configuration
+                        Interface Configuration
                     </v-card-title>
                     <div class="d-flex flex-no-wrap justify-space-between">
                         <v-col cols="12">
                             <v-text-field
                                     v-model="server.publicKey"
-                                    label="Public key"
+                                    label="Public Key"
                                     disabled
                             />
                             <v-text-field
                                     v-model="server.listenPort"
                                     type="number"
                                     :rules="[
-                          v => !!v || 'Listen port is required',
+                          v => !!v || 'Port is required',
                         ]"
-                                    label="Listen port"
+                                    label="Port"
                                     required
                             />
                             <v-combobox
                                     v-model="server.address"
                                     chips
-                                    hint="Write IPv4 or IPv6 CIDR and hit enter"
-                                    label="Server interface addresses"
+                                    hint="Insert IPv4 or IPv6 and hit enter"
+                                    label="Interface Addresses"
                                     multiple
                                     dark
                             >
@@ -49,13 +49,13 @@
             <v-col cols="12">
                 <v-card dark>
                     <v-card-title>
-                        Client global configuration
+                        Client Configuration
                         <v-spacer></v-spacer>
                         <v-btn
                                 color="warning"
                                 @click="applyGlobals"
                         >
-                            Apply globals to all clients
+                            Apply to all clients
                             <v-icon right dark>mdi-update</v-icon>
                         </v-btn>
                     </v-card-title>
@@ -63,17 +63,17 @@
                         <v-col cols="12">
                             <v-text-field
                                     v-model="server.endpoint"
-                                    label="Public endpoint for clients to connect to"
+                                    label="Endpoint"
                                     :rules="[
-                          v => !!v || 'Public endpoint for clients to connect to is required',
+                          v => !!v || 'Endpoint is required',
                         ]"
                                     required
                             />
                             <v-combobox
                                     v-model="server.dns"
                                     chips
-                                    hint="Write IPv4 or IPv6 address and hit enter"
-                                    label="DNS servers for clients"
+                                    hint="Insert IPv4 or IPv6 and hit enter"
+                                    label="DNS Servers"
                                     multiple
                                     dark
                             >
@@ -92,8 +92,8 @@
                             <v-combobox
                                     v-model="server.allowedips"
                                     chips
-                                    hint="Write IPv4 or IPv6 address and hit enter"
-                                    label="Default Allowed IPs for clients"
+                                    hint="Insert IPv4 or IPv6 and hit enter"
+                                    label="Allowed IPs"
                                     multiple
                                     dark
                             >
@@ -112,14 +112,14 @@
                             <v-text-field
                                     type="number"
                                     v-model="server.mtu"
-                                    label="Define global MTU"
-                                    hint="Leave at 0 and let wg-quick take care of MTU"
+                                    label="MTU"
+                                    hint="Maximum Transmission Unit. 0 = auto"
                             />
                             <v-text-field
                                     type="number"
                                     v-model="server.persistentKeepalive"
                                     label="Persistent keepalive"
-                                    hint="Leave at 0 if you dont want to specify persistent keepalive"
+                                    hint="In seconds. 0 = auto"
                             />
                         </v-col>
                     </div>
@@ -130,25 +130,29 @@
             <v-col cols="12">
                 <v-card dark>
                     <v-card-title>
-                        Interface configuration hooks
+                      Configuration Hooks
                     </v-card-title>
                     <div class="d-flex flex-no-wrap justify-space-between">
                         <v-col cols="12">
                             <v-text-field
                                     v-model="server.preUp"
-                                    label="PreUp: script snippets which will be executed by bash before setting up the interface"
+                                    label="PreUp"
+                                    hint="Executed before setting up the interface"
                             />
                             <v-text-field
                                     v-model="server.postUp"
-                                    label="PostUp: script snippets which will be executed by bash after setting up the interface"
+                                    label="PostUp"
+                                    hint="Executed after setting up the interface"
                             />
                             <v-text-field
                                     v-model="server.preDown"
-                                    label="PreDown: script snippets which will be executed by bash before setting down the interface"
+                                    label="PreDown"
+                                    hint="Executed before setting down the interface"
                             />
                             <v-text-field
                                     v-model="server.postDown "
-                                    label="PostDown : script snippets which will be executed by bash after setting down the interface"
+                                    label="PostDown"
+                                    hint="Executed after setting down the interface"
                             />
                         </v-col>
                     </div>
@@ -162,7 +166,7 @@
                     color="success"
                     v-on:click="forceFileDownload()"
             >
-                Download server configuration
+                Download Configuration
                 <v-icon right dark>mdi-cloud-download-outline</v-icon>
             </v-btn>
             <v-spacer></v-spacer>
@@ -171,7 +175,7 @@
                     color="warning"
                     @click="update"
             >
-                Update server configuration
+                Update Configuration
                 <v-icon right dark>mdi-update</v-icon>
             </v-btn>
             <v-divider dark/>

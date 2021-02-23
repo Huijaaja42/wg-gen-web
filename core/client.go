@@ -229,7 +229,7 @@ func EmailClient(id string) error {
 	defer os.Remove(tmpfileCfg.Name()) // clean up
 
 	// conf as png image
-	png, err := qrcode.Encode(string(configData), qrcode.Medium, 280)
+	png, err := qrcode.Encode(string(configData), qrcode.Medium, 250)
 	if err != nil {
 		return err
 	}

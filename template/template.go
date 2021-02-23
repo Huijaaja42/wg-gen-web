@@ -117,7 +117,7 @@ var (
                                                                     <td class="h4 pb20" style="color:#ffffff; font-family:'Muli', Arial,sans-serif; font-size:20px; line-height:28px; text-align:left; padding-bottom:20px;">Hello</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td class="text pb20" style="color:#ffffff; font-family:Arial,sans-serif; font-size:14px; line-height:26px; text-align:left; padding-bottom:20px;">You probably requested VPN configuration. Here is <strong>{{.Client.Name}}</strong> configuration created <strong>{{.Client.Created.Format "Monday, 02 January 06 15:04:05 MST"}}</strong>. Scan the Qrcode or open attached configuration file in VPN client.</td>
+                                                                    <td class="text pb20" style="color:#ffffff; font-family:Arial,sans-serif; font-size:14px; line-height:26px; text-align:left; padding-bottom:20px;">Here is <strong>{{.Client.Name}}</strong> configuration created <strong>{{.Client.Created.Format "Monday, 02 January 06 15:04:05 MST"}}</strong>. Scan the QR Code or open the attached configuration file in a VPN client.</td>
                                                                 </tr>
                                                             </table>
                                                         </th>
@@ -134,7 +134,7 @@ var (
                         <!-- Two Columns / Articles -->
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr>
-                                <td style="padding-bottom: 10px;">
+                                <td class="p30-15 bbrr" style="padding: 0px 30px; border-radius:0px 0px 26px 26px;" bgcolor="#0e264b">
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#0e264b">
                                         <tr>
                                             <td>
@@ -153,7 +153,7 @@ var (
                                                                     <td align="left">
                                                                         <table border="0" cellspacing="0" cellpadding="0">
                                                                             <tr>
-                                                                                <td class="blue-button text-button" style="background:#66c7ff; color:#c1cddc; font-family:'Muli', Arial,sans-serif; font-size:14px; line-height:18px; padding:12px 30px; text-align:center; border-radius:0px 22px 22px 22px; font-weight:bold;"><a href="https://www.wireguard.com/install" target="_blank" class="link-white" style="color:#ffffff; text-decoration:none;"><span class="link-white" style="color:#ffffff; text-decoration:none;">Download WireGuard VPN Client</span></a></td>
+                                                                                <td class="blue-button text-button" style="background:#66c7ff; color:#c1cddc; font-family:'Muli', Arial,sans-serif; font-size:14px; line-height:18px; padding:12px 30px; text-align:center; border-radius:0px 22px 22px 22px; font-weight:bold;"><a href="https://www.wireguard.com/install" target="_blank" class="link-white" style="color:#ffffff; text-decoration:none;"><span class="link-white" style="color:#ffffff; text-decoration:none;">Download WireGuard</span></a></td>
                                                                             </tr>
                                                                         </table>
                                                                     </td>
@@ -170,23 +170,6 @@ var (
                             </tr>
                         </table>
                         <!-- END Two Columns / Articles -->
-
-                        <!-- Footer -->
-                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <td class="p30-15 bbrr" style="padding: 50px 30px; border-radius:0px 0px 26px 26px;" bgcolor="#0e264b">
-                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                        <tr>
-                                            <td class="text-footer1 pb10" style="color:#c1cddc; font-family:'Muli', Arial,sans-serif; font-size:16px; line-height:20px; text-align:center; padding-bottom:10px;">Wg Gen Web - Simple Web based configuration generator for WireGuard</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-footer2" style="color:#8297b3; font-family:'Muli', Arial,sans-serif; font-size:12px; line-height:26px; text-align:center;"><a href="https://github.com/vx3r/wg-gen-web" target="_blank" class="link" style="color:#66c7ff; text-decoration:none;"><span class="link" style="color:#66c7ff; text-decoration:none;">More info on Github</span></a></td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
-                        <!-- END Footer -->
                     </td>
                 </tr>
             </table>

@@ -2,11 +2,10 @@
     <v-container>
         <v-card>
             <v-card-title>
-                Clients
                 <v-switch
                         class="ml-3"
                         dark
-                        :label="listView ? 'Switch to card view' : 'Switch to list view'"
+                        :label="listView ? 'Card view' : 'List view'"
                         v-model="listView"
                 />
                 <v-spacer></v-spacer>
@@ -204,11 +203,11 @@
                                                 @click="email(client)"
                                                 v-on="on"
                                         >
-                                            <span class="d-none d-lg-flex">Send Email</span>
+                                            <span class="d-none d-lg-flex">Email</span>
                                             <v-icon right dark>mdi-email-send-outline</v-icon>
                                         </v-btn>
                                     </template>
-                                    <span>Send Email</span>
+                                    <span>Email</span>
                                 </v-tooltip>
                                 <v-spacer/>
                                 <v-tooltip right>
@@ -248,13 +247,13 @@
                             >
                                 <v-text-field
                                         v-model="client.name"
-                                        label="Client friendly name"
+                                        label="Name"
                                         :rules="[ v => !!v || 'Client name is required', ]"
                                         required
                                 />
                                 <v-text-field
                                         v-model="client.email"
-                                        label="Client email"
+                                        label="Email"
                                         :rules="[ v => (/.+@.+\..+/.test(v) || v === '') || 'E-mail must be valid',]"
                                 />
                                 <v-select
@@ -270,7 +269,7 @@
                                 <v-combobox
                                         v-model="client.allowedIPs"
                                         chips
-                                        hint="Write IPv4 or IPv6 CIDR and hit enter"
+                                        hint="Insert IPv4 or IPv6 and hit enter"
                                         label="Allowed IPs"
                                         multiple
                                         dark
@@ -290,7 +289,7 @@
                                 <v-combobox
                                         v-model="client.tags"
                                         chips
-                                        hint="Write tag name and hit enter"
+                                        hint="Insert tag and hit enter"
                                         label="Tags"
                                         multiple
                                         dark
@@ -311,13 +310,13 @@
                                         v-model="client.enable"
                                         color="red"
                                         inset
-                                        :label="client.enable ? 'Enable client after creation': 'Disable client after creation'"
+                                        :label="client.enable ? 'Enable after creation': 'Disable after creation'"
                                 />
                                 <v-switch
                                         v-model="client.ignorePersistentKeepalive"
                                         color="red"
                                         inset
-                                        :label="'Ignore global persistent keepalive: ' + (client.ignorePersistentKeepalive ? 'Yes': 'NO')"
+                                        :label="client.ignorePersistentKeepalive ? 'Ignore Persistent keepalive': 'Use Persistent keepalive'"
                                 />
                             </v-form>
                         </v-col>
@@ -361,7 +360,7 @@
                             >
                                 <v-text-field
                                         v-model="client.name"
-                                        label="Friendly name"
+                                        label="Name"
                                         :rules="[ v => !!v || 'Client name is required',]"
                                         required
                                 />
@@ -374,7 +373,7 @@
                                 <v-combobox
                                         v-model="client.address"
                                         chips
-                                        hint="Write IPv4 or IPv6 CIDR and hit enter"
+                                        hint="Insert IPv4 or IPv6 and hit enter"
                                         label="Addresses"
                                         multiple
                                         dark
@@ -394,7 +393,7 @@
                                 <v-combobox
                                         v-model="client.allowedIPs"
                                         chips
-                                        hint="Write IPv4 or IPv6 CIDR and hit enter"
+                                        hint="Insert IPv4 or IPv6 and hit enter"
                                         label="Allowed IPs"
                                         multiple
                                         dark
@@ -414,7 +413,7 @@
                                 <v-combobox
                                         v-model="client.tags"
                                         chips
-                                        hint="Write tag name and hit enter"
+                                        hint="Insert tag and hit enter"
                                         label="Tags"
                                         multiple
                                         dark
@@ -435,7 +434,7 @@
                                         v-model="client.ignorePersistentKeepalive"
                                         color="red"
                                         inset
-                                        :label="'Ignore global persistent keepalive: ' + (client.ignorePersistentKeepalive ? 'Yes': 'NO')"
+                                        :label="client.ignorePersistentKeepalive ? 'Ignore Persistent keepalive': 'Use Persistent keepalive'"
                                 />
                             </v-form>
                         </v-col>
@@ -494,7 +493,7 @@
     name: 'Clients',
 
     data: () => ({
-      listView: false,
+      listView: true,
       dialogCreate: false,
       dialogUpdate: false,
       dialogShow: false,
@@ -556,12 +555,12 @@
 
       create(client) {
         if (client.allowedIPs.length < 1) {
-          this.errorClient('Please provide at least one valid CIDR address for client allowed IPs')
+          this.errorClient('Please provide at least one valid allowed IP')
           return;
         }
         for (let i = 0; i < client.allowedIPs.length; i++){
           if (this.$isCidr(client.allowedIPs[i]) === 0) {
-            this.errorClient('Invalid CIDR detected, please correct before submitting')
+            this.errorClient('Invalid allowed IP configuration')
             return
           }
         }
@@ -581,7 +580,7 @@
           return
         }
 
-        if(confirm(`Do you really want to send email to ${client.email} with all configurations ?`)){
+        if(confirm(`Do you really want to email all configurations to ${client.email} ?`)){
           this.emailClient(client)
         }
       },

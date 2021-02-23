@@ -4,14 +4,14 @@
         <v-col cols="12">
           <v-card>
             <v-card-title>
-              WireGuard Interface Status: {{ interface.name }}
+              Interface Status: {{ interface.name }}
             </v-card-title>
             <v-list-item>
               <v-list-item-content>
                 <v-list-item-subtitle>Public Key: {{ interface.publicKey }}</v-list-item-subtitle>
-                <v-list-item-subtitle>Listening Port: {{ interface.listenPort }}</v-list-item-subtitle>
+                <v-list-item-subtitle>Port: {{ interface.listenPort }}</v-list-item-subtitle>
                 <v-list-item-subtitle>Device Type: {{ interface.type }}</v-list-item-subtitle>
-                <v-list-item-subtitle>Number of Peers: {{ interface.numPeers }}</v-list-item-subtitle>
+                <v-list-item-subtitle>Peers: {{ interface.numPeers }}</v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
           </v-card>
@@ -21,7 +21,7 @@
         <v-col cols="12">
           <v-card>
             <v-card-title>
-              WireGuard Client Status
+              Client Status
               <v-spacer></v-spacer>
               <v-text-field
                   v-model="search"
@@ -99,7 +99,7 @@
         { text: 'Connected', value: 'connected', },
         { text: 'Name', value: 'name', },
         { text: 'Endpoint', value: 'endpoint', },
-        { text: 'IP addresses', value: 'allowedIPs', sortable: false, },
+        { text: 'IP Addresses', value: 'allowedIPs', sortable: false, },
         { text: 'Received Bytes', value: 'receivedBytes', },
         { text: 'Transmitted Bytes', value: 'transmittedBytes', },
         { text: 'Last Handshake', value: 'lastHandshake',} ,
@@ -170,7 +170,7 @@
 
         this.interval = setInterval(function () {
           this.readStatus()
-        }.bind(this), 1000); 
+        }.bind(this), 1000);
       }
     }
   };

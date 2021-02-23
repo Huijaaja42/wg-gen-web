@@ -1,7 +1,8 @@
 <template>
     <v-container>
         <v-app-bar app>
-            <v-toolbar-title to="/">Wireguard Web</v-toolbar-title>
+            <img class="mr-3" :src="require('../assets/logo.png')" height="50" alt="WireGuard"/>
+            <v-toolbar-title to="/">WireGuard Web</v-toolbar-title>
 
             <v-spacer />
 
@@ -37,11 +38,11 @@
                 >
                     <v-list-item three-line>
                         <v-list-item-content>
-                            <div class="overline mb-4">connected as</div>
+                            <div class="overline mb-4">Current User</div>
                             <v-list-item-title class="headline mb-1">{{user.name}}</v-list-item-title>
                             <v-list-item-subtitle>Email: {{user.email}}</v-list-item-subtitle>
                             <v-list-item-subtitle>Issuer: {{user.issuer}}</v-list-item-subtitle>
-                            <v-list-item-subtitle>Issued at: {{ user.issuedAt | formatDate }}</v-list-item-subtitle>
+                            <v-list-item-subtitle>Logged In: {{ user.issuedAt | formatDate }}</v-list-item-subtitle>
                         </v-list-item-content>
                     </v-list-item>
                     <v-card-actions>
