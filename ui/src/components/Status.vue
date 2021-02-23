@@ -164,6 +164,13 @@
 
 
         return bytes.toFixed(dp) + ' ' + units[u];
+      },
+      ready: function () {
+        this.readStatus()
+
+        this.interval = setInterval(function () {
+          this.readStatus()
+        }.bind(this), 1000); 
       }
     }
   };
