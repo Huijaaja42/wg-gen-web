@@ -463,26 +463,9 @@
         <v-dialog
             v-if="client"
             v-model="dialogShow"
-            max-width="300"
+            max-width="350"
         >
-            <v-card>
-                <v-list-item-avatar
-                    tile
-                    size="250"
-                >
-                    <v-img :src="'data:image/png;base64, ' + getClientQrcode(client.id)"/>
-                </v-list-item-avatar>
-                <v-card-actions>
-                    <v-spacer/>
-                    <v-btn
-                            color="primary"
-                            @click="dialogShow = false"
-                    >
-                        Close
-                        <v-icon right dark>mdi-close-circle-outline</v-icon>
-                    </v-btn>
-                </v-card-actions>
-            </v-card>
+            <v-img :src="'data:image/png;base64, ' + getClientQrcode(client.id)"/>
         </v-dialog>
     </v-container>
 </template>
