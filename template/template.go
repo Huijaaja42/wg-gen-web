@@ -106,7 +106,7 @@ var (
                                                         <th class="column-top" width="280" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
                                                             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                                 <tr>
-                                                                    <td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="cid:{{.QrcodePngName}}" width="280" height="210" border="0" alt="" /></td>
+                                                                    <td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="cid:{{.QrcodePngName}}" width="250" height="250" border="0" alt="" /></td>
                                                                 </tr>
                                                             </table>
                                                         </th>
@@ -114,10 +114,10 @@ var (
                                                         <th class="column-top" width="280" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
                                                             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                                 <tr>
-                                                                    <td class="h4 pb20" style="color:#ffffff; font-family:'Muli', Arial,sans-serif; font-size:20px; line-height:28px; text-align:left; padding-bottom:20px;">Hello</td>
+                                                                    <td class="h4 pb20" style="color:#ffffff; font-family:'Muli', Arial,sans-serif; font-size:20px; line-height:28px; text-align:left; padding-bottom:20px;">Hi {{.Client.CreatedBy}},</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td class="text pb20" style="color:#ffffff; font-family:Arial,sans-serif; font-size:14px; line-height:26px; text-align:left; padding-bottom:20px;">Here is <strong>{{.Client.Name}}</strong> configuration created <strong>{{.Client.Created.Format "Monday, 02 January 06 15:04:05 MST"}}</strong>. Scan the QR Code or open the attached configuration file in a VPN client.</td>
+                                                                    <td class="text pb20" style="color:#ffffff; font-family:Arial,sans-serif; font-size:14px; line-height:26px; text-align:left; padding-bottom:20px;">Here is your <strong>{{.Client.Name}}</strong> configuration created <strong>{{.Client.Created.Format "Monday, 02 January 06 15:04:05 MST"}}</strong>. Scan the QR Code or open the attached configuration file in a VPN client.</td>
                                                                 </tr>
                                                             </table>
                                                         </th>

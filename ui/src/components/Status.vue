@@ -133,6 +133,14 @@
       },
     },
 
+    ready () {
+        this.readStatus()
+
+        this.interval = setInterval(function () {
+          this.readStatus()
+        }.bind(this), 1000);
+    },
+
     methods: {
       ...mapActions('status', {
         readStatus: 'read',
@@ -165,13 +173,6 @@
 
         return bytes.toFixed(dp) + ' ' + units[u];
       },
-      ready: function () {
-        this.readStatus()
-
-        this.interval = setInterval(function () {
-          this.readStatus()
-        }.bind(this), 1000);
-      }
     }
   };
 </script>
