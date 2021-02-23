@@ -57,12 +57,12 @@
                 </template>
                 <template v-slot:item.created="{ item }">
                     <v-row>
-                        <p>At {{ item.created | formatDate }} by {{ item.createdBy }}</p>
+                        <p>{{ item.created | formatDate }}</p>
                     </v-row>
                 </template>
                 <template v-slot:item.updated="{ item }">
                     <v-row>
-                        <p>At {{ item.updated | formatDate }} by {{ item.updatedBy }}</p>
+                        <p>{{ item.updated | formatDate }}</p>
                     </v-row>
                 </template>
                 <template v-slot:item.action="{ item }">
@@ -235,7 +235,7 @@
                 max-width="550"
         >
             <v-card>
-                <v-card-title class="headline">Add new client</v-card-title>
+                <v-card-title class="headline">Add Client</v-card-title>
                 <v-card-text>
                     <v-row>
                         <v-col
@@ -248,13 +248,13 @@
                                 <v-text-field
                                         v-model="client.name"
                                         label="Name"
-                                        :rules="[ v => !!v || 'Client name is required', ]"
+                                        :rules="[ v => !!v || 'Name is required', ]"
                                         required
                                 />
                                 <v-text-field
                                         v-model="client.email"
                                         label="Email"
-                                        :rules="[ v => (/.+@.+\..+/.test(v) || v === '') || 'E-mail must be valid',]"
+                                        :rules="[ v => (/.+@.+\..+/.test(v) || v === '') || 'Invalid email',]"
                                 />
                                 <v-select
                                         v-model="client.address"
@@ -348,7 +348,7 @@
                 max-width="550"
         >
             <v-card>
-                <v-card-title class="headline">Edit client</v-card-title>
+                <v-card-title class="headline">Edit Client</v-card-title>
                 <v-card-text>
                     <v-row>
                         <v-col
@@ -361,13 +361,13 @@
                                 <v-text-field
                                         v-model="client.name"
                                         label="Name"
-                                        :rules="[ v => !!v || 'Client name is required',]"
+                                        :rules="[ v => !!v || 'Name is required',]"
                                         required
                                 />
                                 <v-text-field
                                         v-model="client.email"
                                         label="Email"
-                                        :rules="[ v => (/.+@.+\..+/.test(v) || v === '') || 'E-mail must be valid',]"
+                                        :rules="[ v => (/.+@.+\..+/.test(v) || v === '') || 'Invalid email',]"
                                         required
                                 />
                                 <v-combobox
@@ -555,7 +555,7 @@
 
       create(client) {
         if (client.allowedIPs.length < 1) {
-          this.errorClient('Please provide at least one valid allowed IP')
+          this.errorClient('Provide at least one valid allowed IP')
           return;
         }
         for (let i = 0; i < client.allowedIPs.length; i++){
@@ -576,11 +576,11 @@
 
       email(client) {
         if (!client.email){
-          this.errorClient('Client email is not defined')
+          this.errorClient('Email is not defined')
           return
         }
 
-        if(confirm(`Do you really want to email all configurations to ${client.email} ?`)){
+        if(confirm(`Do you really want to email the configuration to ${client.email} ?`)){
           this.emailClient(client)
         }
       },
@@ -603,23 +603,23 @@
       update(client) {
         // check allowed IPs
         if (client.allowedIPs.length < 1) {
-          this.errorClient('Please provide at least one valid CIDR address for client allowed IPs');
+          this.errorClient('Provide at least one valid allowed IP');
           return;
         }
         for (let i = 0; i < client.allowedIPs.length; i++){
           if (this.$isCidr(client.allowedIPs[i]) === 0) {
-            this.errorClient('Invalid CIDR detected, please correct before submitting');
+            this.errorClient('Invalid allowed IP configuration');
             return
           }
         }
         // check address
         if (client.address.length < 1) {
-          this.errorClient('Please provide at least one valid CIDR address for client');
+          this.errorClient('Provide at least one valid Client IP');
           return;
         }
         for (let i = 0; i < client.address.length; i++){
           if (this.$isCidr(client.address[i]) === 0) {
-            this.errorClient('Invalid CIDR detected, please correct before submitting');
+            this.errorClient('Invalid Client IP');
             return
           }
         }
@@ -631,7 +631,7 @@
       forceFileDownload(client){
         let config = this.getClientConfig(client.id)
         if (!config) {
-          this.errorClient('Failed to download client config');
+          this.errorClient('Download Failed');
           return
         }
         const url = window.URL.createObjectURL(new Blob([config]))
